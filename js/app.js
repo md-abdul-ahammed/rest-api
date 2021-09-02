@@ -1,24 +1,28 @@
-const loadSpinner = display => {
-    const spinner = document.getElementById('spinner');
-    spinner.style.display = display;
+/*------------------------------------------
+ spinner add result information management
+ -------------------------------------------*/
+const getInput = (name, display) => {
+    const inputField = document.getElementById(name);
+    inputField.style.display = display;
 }
-const resultInfo = display => {
-    const resultInformation = document.getElementById('result-information');
-    resultInformation.style.display = display;
-}
-
+/*---------------------- 
+search book & get api 
+------------------------*/
 const searchBook = () => {
     const searchField = document.getElementById('search-field')
     const searchText = searchField.value;
     console.log(searchText)
     searchField.value = '';
-    loadSpinner('block')
-    resultInfo('none');
-    const url = `http://openlibrary.org/search.json?q=${searchText}`;
+    getInput('spinner', 'block')
+    getInput('result-information', 'none');
+    const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
         .then(res => res.json())
         .then(data => displayResult(data))
 }
+/*----------------------------------
+result information management here 
+-----------------------------------*/
 const displayResult = books => {
     const bookList = books.docs;
     const searchResultsCount = document.getElementById('search-result-count')
@@ -26,15 +30,14 @@ const displayResult = books => {
     const searchResults = document.getElementById('search-result')
     searchResults.textContent = '';
     searchResultsCount.textContent = '';
-    loadSpinner('none')
+    getInput('spinner', 'none')
     if (books.numFound === 0) {
         searchResultsCount.innerHTML = `
     <p class='container'>Total Result: ${books.numFound}</p>
     <p class='container'>Showing Result: ${count}</p>
     `
-        resultInfo('block');
+        getInput('result-information', 'block');
     }
-
     bookList.forEach(book => {
         console.log(book)
         if (book.cover_i) {
@@ -59,10 +62,9 @@ const displayResult = books => {
             searchResults.appendChild(div)
         }
         searchResultsCount.innerHTML = `
-    <p class='container'>Total Result: ${books.numFound}</p>
-    <p class='container'>Showing Result: ${count}</p>
-    `
-
+            <p class='container'>Total Result: ${books.numFound}</p>
+            <p class='container'>Showing Result: ${count}</p>
+        `
     });
 
 }
