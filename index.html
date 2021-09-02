@@ -9,33 +9,46 @@
     <!-- bootstrap css link is here -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <style>
-        .bg-custom-color {
-            background-color: #fffbfb;
-        }
-    </style>
+    <!-- custom css link is here -->
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <header>
         <h2 class="shadow-sm p-3 text-center text-primary">Search Your Favorite Book</h2>
+        <!-- search area start here -->
         <div class="input-group mb-3 w-50 mx-auto mt-4 shadow">
-            <input id="search-field" type="text" class="form-control" placeholder="Book Name"
+            <input id="search-field" type="text" class="form-control" placeholder="search book name"
                 aria-label="Recipient's username" aria-describedby="button-addon2">
             <button onclick="searchBook()" class="btn btn-outline-primary" type="button"
                 id="button-addon2">Search</button>
         </div>
+        <!-- spinner area start here -->
+        <div class="d-flex justify-content-center">
+            <div id="spinner" class="spinner-border text-primary " role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <!-- result count area -->
         <div id="search-result-count">
 
         </div>
-    </header>
-    <main class="container mt-5 p-2">
-        <div id="search-result" class="shadow-sm row row-cols-1 row-cols-md-5 g-4 bg-custom-color">
 
+    </header>
+    <main>
+        <!-- result information message -->
+        <div id="result-information">
+            <p class="fw-bold text-center mt-3">There is nothing found</p>
+        </div>
+        <!-- result area here -->
+        <div class="container mt-5 p-2">
+            <div id="search-result" class="shadow-sm row row-cols-1 row-cols-md-5 g-4 bg-custom-color">
+
+            </div>
         </div>
     </main>
     <footer>
-
+        <!-- footer area here -->
     </footer>
     <!-- bootstrap js link is here -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"

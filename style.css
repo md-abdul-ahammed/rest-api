@@ -1,0 +1,18 @@
+.bg-custom-color {
+    background-color: #fffbfb;
+}
+
+#spinner {
+    display: none;
+}
+
+#result-information {
+    display: none;
+}
+.spinner-border{
+    width: 10rem;
+    height: 10rem;
+    border: 1.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+}
